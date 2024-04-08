@@ -1,0 +1,453 @@
+﻿<UserControl x:Class="AssutaRequestManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  FlowDirection="RightToLeft"  >
+
+
+
+    <UserControl.Resources>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="IsThreeState" Value="False"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+        <Style TargetType="GroupBox">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Height" Value="Auto"></Setter>
+            <Setter Property="BorderBrush" Value="BlanchedAlmond"></Setter>
+
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="IsEditable" Value="True"></Setter>
+            <Setter Property="MinWidth" Value="200"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="IsSynchronizedWithCurrentItem" Value="False"></Setter>
+
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="TextAlignment" Value="Right"></Setter>
+
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+
+        </Style>
+        <Style TargetType="Label" x:Key="lblHeader">
+
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+
+            <Setter Property="Margin" Value="3"></Setter>
+        </Style>
+
+
+        <Style TargetType="DatePicker">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+            <Setter Property="IsThreeState" Value="False"></Setter>
+        </Style>
+        <Style TargetType="TextBox" x:Name="txtCal" x:Key="txtCal">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Background" Value="LemonChiffon"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+            <Setter Property="IsEnabled" Value="False"></Setter>
+            <Setter Property="MinWidth" Value="100"></Setter>
+            <Setter Property="MinHeight" Value="25"></Setter>
+        </Style>
+        <Style TargetType="TextBox" x:Name="txtRaw"  x:Key="txtRaw">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Background" Value="SkyBlue"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+            <Setter Property="IsEnabled" Value="False"></Setter>
+            <Setter Property="MinWidth" Value="100"></Setter>
+            <Setter Property="MinHeight" Value="25"></Setter>
+        </Style>
+        <Style TargetType="TextBlock" x:Name="txtBlock" x:Key="txtBlock">
+            <Setter Property="FontWeight" Value="Normal"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+
+        </Style>
+        <Style TargetType="Grid" x:Key="innerGrid">
+            <Setter Property="Background" Value="Lavender"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+        </Style>
+        <Style   TargetType="Button">
+            <Setter Property="Margin" Value="3"></Setter>
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Height" Value="35"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+        <Style TargetType="Grid" >
+            <Setter Property="Background" Value="Lavender"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Name="grid" Width="1141">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="font" Content="עדכון מסרים"
+               HorizontalAlignment="Center" Grid.ColumnSpan="4" FontSize="33" FontWeight="Bold" FontStyle="Italic">
+
+            </Label>
+            <GroupBox Header="פרטי מטופל" Grid.Row="3" Grid.ColumnSpan="5" BorderThickness="3">
+                <Grid ShowGridLines="False">
+                    <Grid.RowDefinitions >
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+
+
+                    </Grid.ColumnDefinitions>
+
+
+
+                    <!--<ComboBox Name="comboBoxClient"  Grid.Column="3"   Grid.Row="6" >
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}: {1}">
+                                        <Binding Path="U_FIRST_NAME"/>
+                                        <Binding Path="U_LAST_NAME"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>-->
+
+                    <Label Content="שם:"  BorderBrush="Black" Grid.Column="4"   Grid.Row="5" Margin="3,3,143,3" />
+                    <TextBox Width="120" Height="34" Name="searchNameTextBox" Grid.Row="5" Grid.Column="4" HorizontalAlignment="Left" IsEnabled="False" Background="BlanchedAlmond" Margin="53,4,0,4"  />
+
+                    <Label Content="תז:" BorderBrush="Black" Grid.Column="5"   Grid.Row="5" Margin="10,4,134,2"  />
+                    <TextBox Width="120" Height="34" Name="searchIDTextBox" Grid.Row="5" Grid.Column="5" IsEnabled="False" Background="BlanchedAlmond" Margin="52,4,10,4"  />
+
+
+                    <TextBlock Name="IDNumber" Grid.Row="0" Grid.Column="0"  Style="{StaticResource txtBlock}" Margin="10,0,0,0">מספר זהות:</TextBlock>
+                    <TextBlock  Name="firstName" Grid.Row="1" Grid.Column="0" Style="{StaticResource txtBlock}" Margin="10,0,0,0">שם פרטי:</TextBlock>
+                    <TextBlock Name="lastName" Grid.Row="2" Grid.Column="0"  Style="{StaticResource txtBlock}" Margin="10,0,0,0">שם משפחה:</TextBlock>
+                    <TextBlock Name="gender"  Grid.Row="3" Grid.Column="0"  Style="{StaticResource txtBlock}" Margin="10,0,0,0">מין:</TextBlock>
+                    <TextBlock Name="IDType" Grid.Row="4" Grid.Column="0"  Style="{StaticResource txtBlock}" Margin="10,0,0,0">סוג תעודה מזהה:</TextBlock>
+                    <TextBlock Name="birthDate"  Grid.Row="5" Grid.Column="0"  Style="{StaticResource txtBlock}" Margin="10,0,0,0">תאריך לידה:</TextBlock>
+
+                    <TextBox  Name="IdNumberRaw" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Style="{StaticResource txtRaw}"/>
+                    <TextBox  Name="firstNameRaw" Grid.Row="1" Grid.Column="1" Style="{StaticResource txtRaw}"/>
+                    <TextBox  Name="lastNameRaw"  Grid.Row="2" Grid.Column="1" Style="{StaticResource txtRaw}"/>
+                    <TextBox  Name="genderRaw" Grid.Row="3" Grid.Column="1"   Style="{StaticResource txtRaw}"/>
+                    <TextBox  Name="IDTypeRaw" Grid.Row="4" Grid.Column="1"   Style="{StaticResource txtRaw}"/>
+                    <TextBox  Name="birthDateRaw" Grid.Row="5" Grid.Column="1" Style="{StaticResource txtRaw}"/>
+
+                    <TextBox Name="IdNumberCal" Grid.Row="0" Grid.Column="2"   Style="{StaticResource txtCal}"/>
+                    <TextBox Name="firstNameCal" Grid.Row="1" Grid.Column="2" Style="{StaticResource txtCal}"/>
+                    <TextBox Name="lastNameCal" Grid.Row="2" Grid.Column="2" Style="{StaticResource txtCal}"/>
+                    <TextBox Name="genderCal" Grid.Row="3" Grid.Column="2" Style="{StaticResource txtCal}"/>
+                    <TextBox Name="IDTypeCal" Grid.Row="4" Grid.Column="2"  Style="{StaticResource txtCal}"/>
+                    <TextBox Name="birthDateCal" Grid.Row="5" Grid.Column="2" Style="{StaticResource txtCal}"/>
+
+                    <Label Name="IdNumberUpdate" Grid.Row="0" Grid.Column="3" Width="170" Style="{StaticResource lblHeader}"/>
+                    <Label Name="firstNameUpdate" Grid.Row="1" Grid.Column="3" Width="170"  Style="{StaticResource lblHeader}"  />
+                    <Label Name="lastNameUpdate" Grid.Row="2" Grid.Column="3" Width="170"  Style="{StaticResource lblHeader}"  />
+                    <Label Name="genderUpdate" Grid.Row="3" Grid.Column="3"   Width="170"  Style="{StaticResource lblHeader}"  />
+                    <Label Name="IDTypeUpdate" Grid.Row="4" Grid.Column="3"   Width="170" Style="{StaticResource lblHeader}"  />
+                    <Label Name="birthDateUpdate" Grid.Row="5" Grid.Column="3" Style="{StaticResource lblHeader}"  />
+                    <Label Name="errorUpdate" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="7"  FontSize="16" Style="{StaticResource lblHeader}"  />
+
+                    <ListBox Name="nameListBox" Grid.RowSpan="5" Grid.Row="0" MinWidth="150" HorizontalAlignment="Center" Grid.Column="4" MaxHeight="180" Height="180" SelectionChanged="nameListBox_SelectionChanged" Width="143" IsEnabled="False">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="U_FIRST_NAME"/>
+                                            <Binding Path="U_LAST_NAME"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+
+                    <ListBox Name="idListBox" Grid.RowSpan="5" Grid.Row="0" MinWidth="150" HorizontalAlignment="Center" Grid.Column="5" MaxHeight="180" Height="180" SelectionChanged="idListBox_SelectionChanged" Width="143" IsEnabled="False"/>
+
+                    <Button Name="editClientButton" Grid.Row="5" Grid.Column="6" Click="Edit_Client_Button_Click">עדכן נבדק</Button>
+
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Header="מסר" BorderThickness="3">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Grid.Row="0" Grid.Column="0" >מזהה מסר/מספר אסותא:</TextBlock>
+                        <TextBox Width="150" Height="34" x:Name="userTextBoxID" IsEnabled="True" Background="BlanchedAlmond"  Grid.Row="0" Grid.Column="1" />
+                        <Button Name="findClientButton"  Content="חיפוש"  />
+                    </StackPanel>
+                    <TextBlock Name="msgAssutaNumber" Background="Yellow" Grid.Row="1" Grid.Column="2"></TextBlock>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="msgStatus" Background="Yellow" ></TextBlock>
+                        <TextBlock Name="msgDate" Background="Yellow" ></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+
+            </GroupBox>
+
+
+
+            <GroupBox Header="רופא מפנה" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="3">
+                <Grid HorizontalAlignment="Left" Margin="3,3,0,3" Width="1119">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="135"/>
+                        <ColumnDefinition Width="Auto" MinWidth="106"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" MaxWidth="51"/>
+                        <ColumnDefinition Width="Auto" MaxWidth="218"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="refferingDoctor" Grid.Column="0"  Height="24" Style="{StaticResource txtBlock}" Margin="10,6,29,5">שם רופא:</TextBlock>
+                    <TextBlock Name="refferingDoctorNbr"  Grid.Row="1" Grid.Column="0" Margin="10,9,17,9" Height="24"  Style="{StaticResource txtBlock}">מספר רופא:</TextBlock>
+                    <TextBox Name="refferingDoctorRaw" Grid.Row="0" Grid.Column="1" Style="{StaticResource txtRaw}" Height="29"/>
+                    <TextBox Name="refferingDoctorNbrRaw" Grid.Row="1" Grid.Column="1" Style="{StaticResource txtRaw}" Margin="3,7,3,6" Height="29"/>
+                    <TextBox Name="refferingDoctorCal" Grid.Row="0" Grid.Column="2" Style="{StaticResource txtCal}" Height="29"/>
+                    <TextBox Name="refferingDoctorNbrCal" Grid.Row="1" Grid.Column="2" Style="{StaticResource txtCal}" Margin="3,7,3,6" Height="29"/>
+                    <Label Content="שם:"  BorderBrush="Black" Grid.Column="3"   Grid.Row="1" Height="36" MaxWidth="51" />
+                    <Button Name="buttonAddDoctor" Content="הוספת רופא" Grid.Column="7"   Grid.Row="0" VerticalAlignment="Top" Width="120" Click="buttonAddDoctor_Click" />
+                    <ComboBox Name="comboBoxRefferDR" Grid.Row="1"  Grid.Column="4"  Width="200" Margin="4,3,14,3" IsEnabled = "True" IsEditable="True">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel  VirtualizationMode="Recycling" />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                        <!--<ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}: {1}">
+                                        <Binding Path="U_LAST_NAME"/>
+                                        <Binding Path="U_FIRST_NAME"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>-->
+                    </ComboBox>
+                    <Label Content="מס' רישיון:"  BorderBrush="Black" Grid.Column="5"   Grid.Row="1" Height="36" />
+                    <ComboBox Name="comboBoxRefferDRByID" Grid.Row="1"  Grid.Column="6"  Width="200" Margin="13,3,4,3" IsEnabled = "False">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                    <Label Name="refferingDoctorNbrUpdate" Grid.Row="0" Grid.Column="3" Height="10" Margin="3,12,3,13" />
+                    <Button Name="editRefDoctorButton" Grid.Row="1" Grid.Column="7" Click="Edit_RefDoctor_Button_Click">עדכן רופא</Button>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="רופא מבצע" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="3">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="135"/>
+                        <ColumnDefinition Width="Auto" MinWidth="106"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" MaxWidth="51"/>
+                        <ColumnDefinition Width="Auto" MaxWidth="218"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="implementingDoctor" Grid.Row="0" Grid.Column="0" Height="24" Margin="3,6,0,5" Width="78" >שם רופא:</TextBlock>
+                    <TextBlock Name="implementingDoctorNbr" Grid.Row="1" Height="24" Margin="10,9,17,9"  Style="{StaticResource txtBlock}">מספר רופא:</TextBlock>
+                    <TextBox  Name="implementingDoctorRaw" Grid.Row="0" Grid.Column="1" Style="{StaticResource txtRaw}" Height="29"/>
+                    <TextBox  Name="implementingDoctorNbrRaw" Grid.Row="1" Grid.Column="1" Style="{StaticResource txtRaw}" Height="28" Margin="3,7"/>
+                    <TextBox  Name="implementingDoctorCal" Grid.Row="0" Grid.Column="2" Style="{StaticResource txtCal}" Height="29"/>
+                    <TextBox  Name="implementingDoctorNbrCal" Grid.Row="1" Grid.Column="2" Style="{StaticResource txtCal}" Height="28" Margin="3,7"/>
+                    <Label Content="שם:"  BorderBrush="Black" Grid.Column="3"   Grid.Row="1" Height="36" />
+
+                    <ComboBox Name="comboBoxImpDR" Grid.Row="1" Grid.Column="4" Margin="3,3,13,3" Width="200" IsEnabled = "False" >
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel  VirtualizationMode="Recycling" />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                        <!--<ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}: {1}">
+                                        <Binding Path="U_LAST_NAME"/>
+                                        <Binding Path="U_FIRST_NAME"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>-->
+                    </ComboBox>
+                    <Label Content="מס' רישיון:"  BorderBrush="Black" Grid.Column="5"   Grid.Row="1" Height="36" />
+                    <ComboBox Name="comboBoxImpDRByID" Grid.Row="1" Grid.Column="6" Margin="12,3,3,3" Width="200" IsEnabled = "False">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                    <Label Name="implementingDoctorNbrUpdate" Grid.Row="0" Grid.Column="3" Height="10" Margin="3,12,3,13" />
+                    <Button Name="editImpDoctorButton" Grid.Row="1" Grid.Column="7" Click="Edit_ImpDoctor_Button_Click">עדכן רופא</Button>
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="מרפאה" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="3">
+                <Grid HorizontalAlignment="Left" Margin="3,3,-2,3" Width="937">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="138"/>
+                        <ColumnDefinition Width="Auto" MinWidth="137"/>
+                        <ColumnDefinition Width="Auto" MinWidth="161"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource txtBlock}" Margin="10,0,0,0">מרפאה:</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource txtBlock}" Margin="10,0,0,0">מספר מרפאה:</TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="1"  Name="clinicRaw" HorizontalAlignment="Right" Style="{StaticResource txtRaw}" Height="29" Margin="0,0,39,6" Width="100"/>
+                    <TextBox Grid.Row="1"  Name="clinicCodeRaw" HorizontalAlignment="Right" Style="{StaticResource txtRaw}" Margin="0,3,39,3" Width="100" Grid.Column="1" Height="30"/>
+                    <TextBox  Grid.Row="1" Grid.Column="1" Name="clinicCal" HorizontalAlignment="Center" Style="{StaticResource txtCal}" Height="30" Margin="106,3,218,3" Width="100" Grid.ColumnSpan="2"/>
+                    <ComboBox Grid.Row="1" Grid.Column="2" Name="comboBoxClinics" IsEnabled = "False" Margin="85,3,0,3" Width="200">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel/>
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </Grid>
+
+            </GroupBox>
+
+
+
+            <GroupBox Header="גורם משלם" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="customer"  Style="{StaticResource txtBlock}" Grid.Column="0" Margin="10,0,125,0"><Run Text="גורם משלם:"/></TextBlock>
+                    <TextBox x:Name="customerRaw" Style="{StaticResource txtRaw}" Height="29" Margin="139,0,0,10"/>
+                    <TextBox x:Name="customerCal"  Style="{StaticResource txtCal}" Height="30" Margin="5,0,5,9" Grid.Column="2"/>
+                    <ComboBox x:Name="comboBoxCustomer" Width="194" RenderTransformOrigin="0.87,0.467" IsEnabled = "False" Margin="10,0,0,6" Grid.Column="3">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </Grid>
+
+
+            </GroupBox>
+
+
+            <TextBlock Text="פרטי מסר" Grid.Row="2" Background="SkyBlue" HorizontalAlignment="Right" Margin="0,3,218,3" Grid.ColumnSpan="2" />
+
+            <TextBlock Text="נתונים מחושבים" Grid.Row="2" Grid.Column="1"  Background="LemonChiffon" HorizontalAlignment="Right" Margin="0,3,72,3"  />
+
+            <TextBlock Text="עדכון נתונים" Grid.Row="2" Grid.Column="1" Margin="179,3,0,3" Grid.ColumnSpan="2" />
+
+            <Button Click="Save_Button_Click" Content="שמור"  Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Button Click="Exit_Button_Click" Content="יציאה" Grid.Row="9" Grid.Column="3" />
+        </Grid>
+    </ScrollViewer>
+    
+
+</UserControl>
